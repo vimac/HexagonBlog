@@ -1,6 +1,3 @@
-<?php 
-use HexagonBlog\app\widget\Tag;
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,30 +9,13 @@ use HexagonBlog\app\widget\Tag;
     <link href="/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/css/bootswatch.css" rel="stylesheet" />
     <link href="/css/blog.css" rel="stylesheet" />
+    <link href="/css/admin/admin.css" rel="stylesheet" />
 </head>
+
 <body>
     <div class="container">
-        <div class="row">
-            <div class="span12">
-                <?php $_helper->loadPanel('nav');?>
-            </div>
-        </div>
-        <div class="row">
-            <div class="posts span9">
-                <?php echo $_screenHolder;?>
-            </div>
-            <div class="sidebar span3">
-                <?php Tag::load();?>
-            </div>
-        </div>
-        <footer id="footer">
-            <p class="pull-right"><a href="#top">Back to top</a></p>
-            <div class="links">
-                <a href="/admin/login">Admin</a>
-            </div>
-            Made by <a href="http://vifix.cn" target="_blank">Mac Chow</a>,
-            Based on <a href="https://github.com/vimac/HexagonFramework" target="_blank">Hexagon Framework</a>
-        </footer>
+        <?php echo $_screenHolder;?>
+        <?php $_helper->loadPanel('admin/footer');?>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/js/jquery.smooth-scroll.min.js"></script>

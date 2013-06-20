@@ -4,11 +4,11 @@ namespace HexagonBlog\app\controller\admin;
 
 use Hexagon\controller\Controller;
 
-class DashboardController extends Controller{
+class TagController extends Controller{
     
     public function __construct($req, $res) {
         parent::__construct($req, $res);
-        $this->bindValue('_active', 'dashboard');
+        $this->bindValue('_active', 'tag');
     }
     
     public function index() {
