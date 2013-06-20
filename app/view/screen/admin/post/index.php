@@ -24,3 +24,9 @@
 </tr>
 <?php endforeach;?>
 </table>
+
+<?php if ($pagination->needPage()):?>
+<div class="row">
+    <?php $_helper->loadPanel('pager');?>
+</div>
+<?php endif;?>
