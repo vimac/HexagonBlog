@@ -31,9 +31,10 @@ class Post extends Model {
         $this->db = self::getDBAgent();
     }
     
-    public function getPostCount() {
+    public function getPostCount($type = 'post') {
         $db = $this->db;
-        $sql = 'select count(*) as c from `post`';
+        $sql = 'select count(*) as c from `post` where `type` = ?';
+        $db->addStatementArg($type);
         $r = $db->queryOne($sql);
         return $r['c'];
     }
@@ -42,10 +43,10 @@ class Post extends Model {
      * @param int $page
      * @return array
      */
-    public function getPosts($page, $size) {
+    public function getPosts($page, $size, $type = 'post') {
         $db = $this->db;
-        $sql = 'select p.*, u.name, u.email from `post` p left join `user` u on u.`uid` = p.`uid` where p.`status` = 0 order by `pid` desc limit ?, ? ';
-        $db->addStatementArgs([[($page - 1) * $size, DBAgent::PARAM_INT], [$size, DBAgent::PARAM_INT]]);
+        $sql = 'select p.*, u.name, u.email from `post` p left join `user` u on u.`uid` = p.`uid` where p.`status` = 0 and p.`type` = ? order by `pid` desc limit ?, ? ';
+        $db->addStatementArgs([[$type, DBAgent::PARAM_STR], [($page - 1) * $size, DBAgent::PARAM_INT], [$size, DBAgent::PARAM_INT]]);
         $result = $db->query($sql);
         return $result;
     }

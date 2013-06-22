@@ -30,3 +30,11 @@ body {
 .table {
     background: #fff;
 }
+
+.control-label {
+    width: 60px !important;
+}
+
+.controls {
+    margin-left: 80px !important;
+}

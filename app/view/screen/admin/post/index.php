@@ -1,18 +1,20 @@
-<div class="btn-toolbar">
-    <div class="btn-group">
-        <button class="btn btn-primary btn-large">New Post</button>
-        <button class="btn btn-success btn-large">Edit</button>
-        <button class="btn btn-inverse btn-large">Remove</button>
-    </div>
+<div class="navbar">
+    <a href="/admin/post/publish" class="btn btn-primary btn-large">New Post</a>
+    <button class="btn btn-success btn-large">Edit</button>
+    <button class="btn btn-inverse btn-large">Remove</button>
+    <form class="navbar-form pull-right">
+        <input type="text" placeholder="search" />
+        <button type="submit" class="btn" />Submit</button>
+    </form>
 </div>
 
-<table class="table table-condensed table-bordered table-hover">
+<table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
-            <th><input type="checkbox" /></th>
-            <th width="70%">Title</th>
-            <th>Author</th>
-            <th>Time</th>
+            <th width="10px"><input type="checkbox" /></th>
+            <th>Title</th>
+            <th width="75px">Author</th>
+            <th width="150px">Time</th>
         </tr>
     </thead>
 <?php foreach($posts as $post):;?>
