@@ -16,7 +16,7 @@ use HexagonBlog\app\widget\admin\Notification;
                 <ul class="nav nav-list">
                     <li class="<?php echo $_active === 'dashboard' ? 'active' : '';?>"><a href="/admin/dashboard/index">Dashboard</a></li>
                     <li class="<?php echo $_active === 'post' ? 'active' : '';?>"><a href="/admin/post/index">Post</a></li>
-                    <li class="<?php echo $_active === 'page' ? 'active' : '';?>"><a href="/admin/page/index">Page</a></li>
+                    <li class="<?php echo $_active === 'page' ? 'active' : '';?>"><a href="/admin/post/index?type=page">Page</a></li>
                     <li class="<?php echo $_active === 'tag' ? 'active' : '';?>"><a href="/admin/tag/index">Tag</a></li>
                     <li class="<?php echo $_active === 'option' ? 'active' : '';?>"><a href="/admin/option/index">Option</a></li>
                     <li class="divider"></li>

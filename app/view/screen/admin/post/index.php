@@ -1,5 +1,5 @@
 <div class="navbar">
-    <a href="/admin/post/publish" class="btn btn-primary btn-large">New Post</a>
+    <a href="/admin/post/publish<?php echo $_active != 'post' ? '?type=' . $_active : '';?>" class="btn btn-primary btn-large">New Post</a>
     <button id="btnRemove" class="btn btn-inverse btn-large">Remove</button>
     <form class="navbar-form pull-right">
         <input type="text" placeholder="search" />

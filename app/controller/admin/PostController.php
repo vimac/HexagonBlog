@@ -34,7 +34,7 @@ class PostController extends Controller{
         $pageSize = 10;
 
         $total = $this->postModel->getPostCount();
-        $posts = $this->postModel->getPosts($page, $pageSize);
+        $posts = $this->postModel->getPosts($page, $pageSize, $type);
         
         $template = '/admin/post/index?page=(page)';
         $extraParam = [];
@@ -42,6 +42,11 @@ class PostController extends Controller{
             $template .= '&q=(keyword)';
             $extraParam['keyword'] = $q;
         }
+        if (!empty($type) && $type != 'post') {
+            $template .= 'type=(type)';
+            $extraParam['$type'] = $type;
+        }
+        
         $pagination = new Pagination($template, $page, $pageSize, $total, $extraParam, '/admin/post/index');
 
         $this->bindValue('posts', $posts);
@@ -74,7 +79,7 @@ class PostController extends Controller{
         return Result::genHTMLResult(Markdown::defaultTransform($data));
     }
     
-    public function commit($title, $content, $tag, $order, $pid = NULL, $type = 'post') {
+    public function commit($title, $content, $order, $tag = '', $pid = NULL, $type = 'post') {
         $title = trim($title);
         $content = trim($content);
         $tag = trim($tag);
@@ -88,6 +93,8 @@ class PostController extends Controller{
         foreach ($tags as &$t) {
             $t = trim($t);
         }
+        
+        array_unique($tags);
         
         $status = 0;
         

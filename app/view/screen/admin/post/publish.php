@@ -19,12 +19,14 @@ $_helper->addCSS('/css/markitup.css');
             <textarea id="markdown" name="content" placeholder="Content"></textarea>
         </div>
     </div>
+    <?php if ($type === 'post'):?>
     <div class="control-group">
         <label class="control-label" for="tag">Tag</label>
         <div class="controls">
             <input type="text" id="tag" placeholder="Tag, seprated by comma" name="tag" class="span9" />
         </div>
     </div>
+    <?php endif;?>
     <div class="control-group">
         <label class="control-label" for="status">Status</label>
         <div class="controls">
