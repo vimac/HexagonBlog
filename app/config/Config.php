@@ -27,7 +27,7 @@ class Config extends BaseConfig {
     
     public $errorHandler = '\Hexagon\system\error\BaseErrorHandler';
     
-    public $csrfProtection = TRUE;
+    public $csrfProtection = FALSE;
     public $csrfTokenName = '_hexagon_csrfp';
     
     public $encryptionKey = 'The answer to life, the universe and everything';
@@ -44,9 +44,12 @@ class Config extends BaseConfig {
     public $interceptRules = [];
     
     protected function __construct() {
+        Context::registerNS('Michelf', Context::getResourcePath('HexagonBlog\app\lib\thirdparty\markdown'));
+        
         $this->logNameSuffix = date('-Y-m-d') . '.php';
         
         $this->interceptRules['pre'] = [['/.*/', ['\HexagonBlog\app\intercept\BrowserTest', '\HexagonBlog\app\intercept\BlogOptions']]];
+//         $this->interceptRules['post'] = [['/\/admin\/.*/', '\HexagonBlog\app\intercept\AdminNotification']];
         
         $this->database = [
             [

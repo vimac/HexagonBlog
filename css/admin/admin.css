@@ -38,3 +38,15 @@ body {
 .controls {
     margin-left: 80px !important;
 }
+
+.alert a {
+    color: #fc0;
+}
+
+.alert a:hover {
+    color: #9cf;
+}
+
+#notification {
+    display: none;
+}

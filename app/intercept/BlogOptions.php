@@ -4,17 +4,17 @@ namespace HexagonBlog\app\intercept;
 
 use Hexagon\intercept\Rule;
 use Hexagon\intercept\IPreRule;
-use HexagonBlog\app\model\Option;
+use HexagonBlog\app\model\OptionModel;
 
 class BlogOptions extends Rule implements IPreRule{
 
     /**
-     * @var Options
+     * @var OptionModel
      */
-    private $o;
+    private $optionModel;
     
     public function pre() {
-        $this->o = Option::getInstance();
-        $this->bindValue('_blogTitle', $this->o->getOption('blogTitle'));
+        $this->optionModel = OptionModel::getInstance();
+        $this->bindValue('_blogTitle', $this->optionModel->getOption('blogTitle'));
     }
 }

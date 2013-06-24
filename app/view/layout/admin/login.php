@@ -2,6 +2,7 @@
 <html>
 <head>
     <?php $_helper->loadPanel('head');?>
+    <link href="/css/admin/admin.css" rel="stylesheet" />
     <title><?php echo $_blogTitle;?></title>
 </head>
 

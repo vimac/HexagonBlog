@@ -5,7 +5,7 @@ namespace HexagonBlog\app\model;
 use Hexagon\model\Model;
 use Hexagon\system\db\DBAgent;
 
-class Post extends Model {
+class PostModel extends Model {
     
     /**
      * @var DBAgent
@@ -13,12 +13,12 @@ class Post extends Model {
     protected $db;
     
     /**
-     * Post
+     * @var PostModel
      */
     protected static $m;
     
     /**
-     * @return Post
+     * @return PostModel
      */
     public static function getInstance() {
         if (!isset(self::$m)) {
@@ -60,5 +60,38 @@ class Post extends Model {
         $db->addStatementArg($id);
         $result = $db->queryOne($sql);
         return $result;
+    }
+    
+    public function insertPost($title, $content, $uid, $type, $status, $parent = NULL, $order = NULL) {
+        $db = $this->db;
+        $time = $_SERVER['REQUEST_TIME'];
+        $sql = 'insert into `post` (`title`,`content`,`uid`,`type`,`status`,`parent`,`order`,`ctime`,`mtime`) values (?,?,?,?,?,?,?,?,?)';
+        $db->addStatementArgs([$title, $content, $uid, $type, $status, $parent, $order, $time, $time]);
+        $r = $db->executeUpdate($sql);
+        if ($r) {
+            return $db->lastInsertId;
+        } else {
+            return NULL;
+        }
+    }
+    
+    public function updatePost($pid, $title, $content, $uid, $type, $status, $parent = NULL, $order = NULL) {
+        $db = $this->db;
+        $time = $_SERVER['REQUEST_TIME'];
+        $sql = 'update `post` set `title` = ?, `content` = ?, `uid` = ?, `type` = ?, `status` = ?, `parent` = ?, `order` = ?, `mtime` = ? where `pid` = ?';
+        $db->addStatementArgs([$title, $content, $uid, $type, $status, $parent, $order, $time, $pid]);
+        return $db->executeUpdate($sql);
+    }
+    
+    public function deletePost($pid) {
+        $db = $this->db;
+        if (!is_array($pid)) {
+            $pid = [$pid];
+        }
+        $sql = 'delete from `post` where `pid` in (' . str_repeat('?,', count($pid) - 1) . '?)';
+        foreach ($pid as $id) {
+            $db->addStatementArg($id);
+        }
+        return $db->executeUpdate($sql);
     }
 }

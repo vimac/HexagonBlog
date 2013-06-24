@@ -1,3 +1,6 @@
+<?php 
+use HexagonBlog\app\widget\admin\Notification;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +23,7 @@
                     <li><a href="/admin/logout">Logout</a></li>
                 </ul>
             </div>
+            <?php Notification::load();?>
             <div class="well span10">
                 <?php echo $_screenHolder;?>
             </div>

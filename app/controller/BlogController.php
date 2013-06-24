@@ -5,26 +5,26 @@ namespace HexagonBlog\app\controller;
 use Hexagon\controller\Controller;
 use Hexagon\system\result\Result;
 use Hexagon\system\util\Pagination;
-use HexagonBlog\app\model\Post;
+use HexagonBlog\app\model\PostModel;
 
 class BlogController extends Controller {
     
     /**
-     * @var Post
+     * @var PostModel
      */
-    private $post;
+    private $postModel;
     
     public function __construct($req, $res) {
         parent::__construct($req, $res);
-        $this->post = Post::getInstance();
+        $this->postModel = PostModel::getInstance();
     }
     
     public function index($page = 1, $q = '') {
         $page = intval($page);
         $pageSize = 3;
 
-        $total = $this->post->getPostCount();
-        $posts = $this->post->getPosts($page, $pageSize);
+        $total = $this->postModel->getPostCount();
+        $posts = $this->postModel->getPosts($page, $pageSize);
         
         foreach ($posts as &$post) {
             $place = strpos($post['content'], '<!--MORE-->');
@@ -53,13 +53,13 @@ class BlogController extends Controller {
     
     public function post($id = NULL) {
         $id = intval($id);
-        $post = $this->post->getPost($id);
+        $post = $this->postModel->getPost($id);
         $this->bindValue('post', $post);
     }
     
     public function page($seoName = NULL) {
         $id = intval($id);
-        $post = $this->post->getPost($id);
+        $post = $this->postModel->getPost($id);
         $this->bindValue('post', $post);
     }
     

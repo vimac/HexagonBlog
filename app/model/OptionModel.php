@@ -5,7 +5,7 @@ namespace HexagonBlog\app\model;
 use Hexagon\model\Model;
 use Hexagon\system\db\DBAgent;
 
-class Option extends Model {
+class OptionModel extends Model {
     
     /**
      * @var DBAgent
@@ -13,12 +13,12 @@ class Option extends Model {
     protected $db;
     
     /**
-     * Option
+     * @var OptionModel
      */
     protected static $m;
     
     /**
-     * @return Option
+     * @return OptionModel
      */
     public static function getInstance() {
         if (!isset(self::$m)) {

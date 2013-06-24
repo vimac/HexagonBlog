@@ -51,4 +51,17 @@ $(function() {
 		};
 		$('#markdown').markItUp(mySettings);
 	}
+	
+	if ($('#notification').size() > 0) {
+		$('#notification').show('fast');
+		window.setTimeout(function(){
+			$('#notification').hide('slow');
+		}, 5000);
+	}
+	
+	$('#btnRemove').click(function(){
+		if (confirm('Confirm remove these posts?')) {
+			$('#postRemove').submit();
+		}
+	});
 });

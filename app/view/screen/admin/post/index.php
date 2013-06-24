@@ -1,13 +1,13 @@
 <div class="navbar">
     <a href="/admin/post/publish" class="btn btn-primary btn-large">New Post</a>
-    <button class="btn btn-success btn-large">Edit</button>
-    <button class="btn btn-inverse btn-large">Remove</button>
+    <button id="btnRemove" class="btn btn-inverse btn-large">Remove</button>
     <form class="navbar-form pull-right">
         <input type="text" placeholder="search" />
         <button type="submit" class="btn" />Submit</button>
     </form>
 </div>
 
+<?php $_helper->formOpen('/admin/post/delete', 'POST', ['id' => 'postRemove']);?>
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -19,13 +19,14 @@
     </thead>
 <?php foreach($posts as $post):;?>
 <tr>
-    <td><input type="checkbox" /></td>
-    <td><?php echo $post['title'];?></td>
+    <td><input type="checkbox" name="pid[]" value="<?php echo $post['pid'];?>" /></td>
+    <td><a href="/admin/post/edit?id=<?php echo $post['pid'];?>"><?php echo $post['title'];?></a></td>
     <td><?php echo $post['name'];?></td>
     <td><?php echo date('Y-m-d H:i:s', $post['ctime']);?></td>
 </tr>
 <?php endforeach;?>
 </table>
+<?php $_helper->formClose();?>
 
 <?php if ($pagination->needPage()):?>
 <div class="row">
