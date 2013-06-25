@@ -18,6 +18,7 @@ use HexagonBlog\app\widget\admin\Notification;
                     <li class="<?php echo $_active === 'post' ? 'active' : '';?>"><a href="/admin/post/index">Post</a></li>
                     <li class="<?php echo $_active === 'page' ? 'active' : '';?>"><a href="/admin/post/index?type=page">Page</a></li>
                     <li class="<?php echo $_active === 'tag' ? 'active' : '';?>"><a href="/admin/tag/index">Tag</a></li>
+                    <li class="<?php echo $_active === 'user' ? 'active' : '';?>"><a href="/admin/user/index">User</a></li>
                     <li class="<?php echo $_active === 'option' ? 'active' : '';?>"><a href="/admin/option/index">Option</a></li>
                     <li class="divider"></li>
                     <li><a href="/admin/logout">Logout</a></li>

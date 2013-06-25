@@ -57,6 +57,4 @@ class OptionModel extends Model {
         return $db->executeUpdate($sql);
     }
     
-    
-    
 }
