@@ -1,9 +1,12 @@
 <div class="navbar">
-    <a href="/admin/post/publish<?php echo $_active != 'post' ? '?type=' . $_active : '';?>" class="btn btn-primary btn-large">New Post</a>
-    <button id="btnRemove" class="btn btn-inverse btn-large">Remove</button>
-    <form class="navbar-form pull-right">
-        <input type="text" placeholder="search" />
-        <button type="submit" class="btn" />Submit</button>
+    <a href="/admin/post/publish<?php echo $_active != 'post' ? '?type=' . $_active : '';?>" class="btn btn-primary btn-large"><i class="icon-plus-sign"></i> New <?php echo ucfirst($_active);?></a>
+    <button id="btnRemove" class="btn btn-inverse btn-large"><i class="icon-minus-sign"></i> Remove</button>
+    <form class="navbar-form pull-right controls">
+        <div class="input-prepend input-append">
+            <span class="add-on"><i class="icon-search"></i></span>
+            <input type="text" placeholder="search" />
+            <button type="submit" class="btn" />Go</button>
+        </div>
     </form>
 </div>
 
