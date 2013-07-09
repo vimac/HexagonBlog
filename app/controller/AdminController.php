@@ -7,7 +7,7 @@ use Hexagon\system\result\Result;
 
 class AdminController extends Controller {
     
-    public function login($id) {
+    public function login() {
     }
     
     public function doLogin($email = '', $password = '', $remember = '') {
