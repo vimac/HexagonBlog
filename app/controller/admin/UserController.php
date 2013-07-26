@@ -15,7 +15,7 @@ class UserController extends Controller{
     
     public function __construct($req, $res) {
         parent::__construct($req, $res);
-        $this->bindValue('_active', 'user');
+        $this->_bindValue('_active', 'user');
         $this->userModel = UserModel::getInstance();
     }
     
@@ -35,8 +35,8 @@ class UserController extends Controller{
         
         $pagination = new Pagination($template, $page, $pageSize, $total, $extraParam, '/admin/user/index');
         
-        $this->bindValue('users', $users);
-        $this->bindValue('pagination', $pagination);
+        $this->_bindValue('users', $users);
+        $this->_bindValue('pagination', $pagination);
     }
     
 }

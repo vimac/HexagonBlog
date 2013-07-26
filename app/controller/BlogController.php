@@ -3,7 +3,6 @@
 namespace HexagonBlog\app\controller;
 
 use Hexagon\controller\Controller;
-use Hexagon\system\result\Result;
 use Hexagon\system\util\Pagination;
 use HexagonBlog\app\model\PostModel;
 
@@ -44,23 +43,23 @@ class BlogController extends Controller {
 
         /**
          * equals
-         * $this->bindValue('posts', $posts);
-         * $this->bindValue('pagination', $pagination);
+         * $this->_bindValue('posts', $posts);
+         * $this->_bindValue('pagination', $pagination);
          * and no return
          */
-        return Result::genPageResult(['posts' => $posts, 'pagination' => $pagination]);
+        return self::_genPageResult(['posts' => $posts, 'pagination' => $pagination]);
     }
     
     public function post($id = NULL) {
         $id = intval($id);
         $post = $this->postModel->getPost($id);
-        $this->bindValue('post', $post);
+        $this->_bindValue('post', $post);
     }
     
     public function page($seoName = NULL) {
         $id = intval($id);
         $post = $this->postModel->getPost($id);
-        $this->bindValue('post', $post);
+        $this->_bindValue('post', $post);
     }
     
 }

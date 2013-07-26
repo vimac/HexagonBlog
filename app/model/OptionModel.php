@@ -28,7 +28,7 @@ class OptionModel extends Model {
     }
     
     public function __construct() {
-        $this->db = self::getDBAgent();
+        $this->db = self::_getDBAgent();
     }
     
     public function getOptions() {

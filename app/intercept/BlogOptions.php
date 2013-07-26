@@ -15,6 +15,6 @@ class BlogOptions extends Rule implements IPreRule{
     
     public function pre() {
         $this->optionModel = OptionModel::getInstance();
-        $this->bindValue('_blogTitle', $this->optionModel->getOption('blogTitle'));
+        $this->_bindValue('_blogTitle', $this->optionModel->getOption('blogTitle'));
     }
 }

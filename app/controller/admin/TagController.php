@@ -8,7 +8,7 @@ class TagController extends Controller{
     
     public function __construct($req, $res) {
         parent::__construct($req, $res);
-        $this->bindValue('_active', 'tag');
+        $this->_bindValue('_active', 'tag');
     }
     
     public function index() {

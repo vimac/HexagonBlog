@@ -7,7 +7,6 @@ use Hexagon\Context;
 use HexagonBlog\app\model\PostModel;
 use HexagonBlog\app\model\TagModel;
 use Hexagon\system\util\Pagination;
-use Hexagon\system\result\Result;
 use Hexagon\system\security\Security;
 use Michelf\Markdown;
 
@@ -49,18 +48,18 @@ class PostController extends Controller{
         
         $pagination = new Pagination($template, $page, $pageSize, $total, $extraParam, '/admin/post/index');
 
-        $this->bindValue('posts', $posts);
-        $this->bindValue('pagination', $pagination);
-        $this->bindValue('_active', $type);
+        $this->_bindValue('posts', $posts);
+        $this->_bindValue('pagination', $pagination);
+        $this->_bindValue('_active', $type);
     }
     
     public function publish($type = 'post') {
-        $this->bindValue('_active', $type);
-        $this->bindValue('type', $type);
+        $this->_bindValue('_active', $type);
+        $this->_bindValue('type', $type);
     }
     
     public function edit($id, $type = 'post') {
-        $this->bindValue('_active', $type);
+        $this->_bindValue('_active', $type);
         $id = intval($id);
         
         $post = $this->postModel->getPost($id);
@@ -70,13 +69,13 @@ class PostController extends Controller{
             $tag[] = $t['name'];
         }
         
-        $this->bindValue('post', $post);
-        $this->bindValue('tag', implode(', ', $tag));
-        $this->bindValue('type', $type);
+        $this->_bindValue('post', $post);
+        $this->_bindValue('tag', implode(', ', $tag));
+        $this->_bindValue('type', $type);
     }
     
     public function preview($data = NULL) {
-        return Result::genHTMLResult(Markdown::defaultTransform($data));
+        return self::_genHTMLResult(Markdown::defaultTransform($data));
     }
     
     public function commit($title, $content, $order, $tag = '', $pid = NULL, $type = 'post') {
@@ -146,7 +145,7 @@ class PostController extends Controller{
             Result::redirect('/admin/post/index');
         }
         
-        return Result::genNoneResult();
+        return self::_genNoneResult();
     }
     
     public function delete($pid) {
@@ -162,6 +161,6 @@ class PostController extends Controller{
         $this->postModel->deletePost($pid);
         
         Result::redirect('/admin/post/index');
-        return Result::genNoneResult();
+        return self::_genNoneResult();
     }
 }

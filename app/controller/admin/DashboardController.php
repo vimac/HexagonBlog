@@ -8,7 +8,7 @@ class DashboardController extends Controller{
     
     public function __construct($req, $res) {
         parent::__construct($req, $res);
-        $this->bindValue('_active', 'dashboard');
+        $this->_bindValue('_active', 'dashboard');
     }
     
     public function index() {

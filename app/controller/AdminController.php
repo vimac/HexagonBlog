@@ -3,7 +3,6 @@
 namespace HexagonBlog\app\controller;
 
 use Hexagon\controller\Controller;
-use Hexagon\system\result\Result;
 
 class AdminController extends Controller {
     
@@ -11,10 +10,10 @@ class AdminController extends Controller {
     }
     
     public function doLogin($email = '', $password = '', $remember = '') {
-        return Result::redirect('/admin/dashboard/index');
+        return self::_redirect('/admin/dashboard/index');
     }
     
     public function logout() {
-        return Result::redirect('/');
+        return self::_redirect('/');
     }
 }
